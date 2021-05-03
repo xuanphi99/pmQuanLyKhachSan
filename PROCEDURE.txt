@@ -1,0 +1,35 @@
+
+-- tim phong trong
+select DISTINCT  r.id,r.name,r.type,r.displayPrice,r.description from tblroom as r,
+(
+select * from tblbooking as book
+where book.idRoom in
+(select room.id from tblroom as room 
+ where room.idhotel = (
+select hotel.id from tblhotel as hotel
+where hotel.name  = 'trigkg' )
+) and
+( book.startDate > '2021-05-06 22:32:44' or book.endDate < '2021-05-06 22:32:44'  ) 
+) as r1
+where r1.idRoom = r.id;
+-- or book.endDate < '2021-05-06 22:32:44'
+
+
+
+
+
+
+-- search phong trong tat ca
+
+select DISTINCT  r.id,r.name,r.type,r.displayPrice,r.description from tblroom as r,
+(
+select * from tblbooking as book
+where book.idRoom in
+(select room.id from tblroom as room 
+ 
+) and
+( book.startDate > '2021-05-06 22:32:44' or book.endDate < '2021-05-06 22:32:44'  ) 
+) as r1
+where r1.idRoom = r.id
+
+
